@@ -30,17 +30,37 @@
   <script>
     function updateMethodVideo() {
         const task = document.getElementById("single-menu-task").value; // e.g. H1_BoxPush
+        const robot = task.split("_")[0]; // e.g. H1
+
         const video_ours = document.getElementById("result-video-ours");
         const video_ppo = document.getElementById("result-video-ppo");
-        const uri_ours = "static/videos/comparison/" + task + "_ours.mp4"
-        const uri_ppo = "static/videos/comparison/" + task + "_ppo.mp4"
-        console.log(uri_ours);
-        video_ours.src = uri_ours;
-        video_ppo.src = uri_ppo;
-        video_ours.playbackRate = 2;
-        video_ppo.playbackRate = 2;
-        video_ours.play();
-        video_ppo.play();
+        const video_hb = document.getElementById("result-video-hb");
+        const video_seq = document.getElementById("result-video-seq");
+        const video_mcp = document.getElementById("result-video-mcp");
+        const video_humanplus = document.getElementById("result-video-humanplus");
+        video_ours.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_ours.mp4";
+        video_ppo.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_ppo.mp4";
+        video_hb.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_hb.mp4";
+        video_seq.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_seq.mp4";
+        video_mcp.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_mcp.mp4";
+        video_humanplus.getElementsByTagName("video")[0].src = "static/videos/comparison/" + task + "_humanplus.mp4";
+
+        if (robot != "H1") {
+          document.getElementById("result-video-second-row").style.display = "none";
+          document.getElementById("result-video-third-row").style.display = "none";
+        } else {
+          document.getElementById("result-video-second-row").style.display = "";
+          document.getElementById("result-video-third-row").style.display = "";
+        }
+        if (task == "H1_FarReach") {
+          video_hb.style.display = "none";
+          video_seq.getElementsByTagName("video")[0].style.width = "45%";
+          const br = document.createElement("br");
+          document.getElementById("result-video-second-row").appendChild(br);
+        } else {
+          video_hb.style.display = "";
+          video_seq.getElementsByTagName("video")[0].style.width = "90%";
+        }
     }
 </script>
 </head>
@@ -270,7 +290,6 @@
         </figure>
       </div>
     </div>
-    <br>
     <div class="columns is-centered">
       <div class="columns is-centered has-text-centered">
         <figure>
@@ -350,8 +369,8 @@
           Choose task: 
           <div class="select is-small">
               <select id="single-menu-task" onchange="updateMethodVideo()">
-                  <option value="H1_FarReach" selected="selected">H1 FarReach</option>
-                  <option value="H1_BoxPush">H1 BoxPush</option>
+                  <option value="H1_FarReach">H1 FarReach</option>
+                  <option value="H1_BoxPush" selected="selected">H1 BoxPush</option>
                   <option value="H1_PackageCarry">H1 PackageCarry</option>
                   <option value="G1_FarReach">G1 FarReach</option>
                   <option value="G1_ButtonPress">G1 ButtonPress</option>
@@ -360,19 +379,51 @@
               </select>
           </div>
           <br><br><br>
-          <div class="columns is-centered">
-            <div class="columns is-centered has-text-centered">
+          <div class="columns is-centered" id="result-video-first-row">
+            <div class="columns is-centered has-text-centered" id="result-video-ours">
               <figure>
-              <video autoplay muted loop playsinline controls src="" width="90%" id="result-video-ours"
+              <video autoplay muted loop playsinline controls src="" width="90%"
                     style="border-radius:10px; "></video>
-              <figcaption>SkillBlender (Ours)</figcaption>
+              <figcaption><b>SkillBlender (Ours)</b></figcaption>
               </figure>
             </div>
-            <div class="columns is-centered has-text-centered">
+            <div class="columns is-centered has-text-centered" id="result-video-ppo">
               <figure>
-              <video autoplay muted loop playsinline controls src="" width="90%" id="result-video-ppo"
+              <video autoplay muted loop playsinline controls src="" width="90%"
                     style="border-radius:10px; "></video>
               <figcaption>PPO</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="columns is-centered" id="result-video-second-row">
+            <div class="columns is-centered has-text-centered" id="result-video-hb">
+              <figure>
+              <video autoplay muted loop playsinline controls src="" width="90%"
+                    style="border-radius:10px; "></video>
+              <figcaption>HumanoidBench</figcaption>
+              </figure>
+            </div>
+            <div class="columns is-centered has-text-centered" id="result-video-seq">
+              <figure>
+              <video autoplay muted loop playsinline controls src="" width="90%"
+                    style="border-radius:10px; "></video>
+              <figcaption>Sequential HRL</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="columns is-centered" id="result-video-third-row">
+            <div class="columns is-centered has-text-centered" id="result-video-mcp">
+              <figure>
+              <video autoplay muted loop playsinline controls src="" width="90%"
+                    style="border-radius:10px; "></video>
+              <figcaption>MCP</figcaption>
+              </figure>
+            </div>
+            <div class="columns is-centered has-text-centered" id="result-video-humanplus">
+              <figure>
+              <video autoplay muted loop playsinline controls src="" width="90%"
+                    style="border-radius:10px; "></video>
+              <figcaption>HumanPlus</figcaption>
               </figure>
             </div>
           </div>
@@ -383,7 +434,7 @@
         Qualitative comparison between different methods on three embodiments. Our <b>SkillBlender</b> not only achieves higher task success accuracy, but also avoids <b>reward hacking</b> and generates more feasible movements.
       </p>
     </div>
-    <h2 class="title is-3 is-size-4-mobile">Skill Decomposition Visualization</h2>
+    <h2 class="title is-3 is-size-4-mobile">Skill Blending Decomposition</h2>
     <br>
     <div class="columns is-centered">
       <div class="columns is-centered has-text-centered">
