@@ -1,4 +1,4 @@
 .DS_Store
 *_slow/
 convert.py
-comparison_slow/
+old/
