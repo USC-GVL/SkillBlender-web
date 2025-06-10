@@ -62,11 +62,31 @@
           video_seq.getElementsByTagName("video")[0].style.width = "90%";
         }
     }
+
+    function initLinks() {
+      const paper_links = document.querySelectorAll('.paper-link');
+      const arxiv_links = document.querySelectorAll('.arxiv-link');
+      const github_links = document.querySelectorAll('.github-link');
+      paper_links.forEach(link => {
+        link.href = "https://github.com/";
+      });
+      arxiv_links.forEach(link => {
+        link.href = "https://arxiv.org/abs/2401.12345"; // Replace with actual arXiv link
+      });
+      github_links.forEach(link => {
+        link.href = "https://arxiv.org/abs/2401.12345"; // Replace with actual arXiv link
+      });
+    }
+
+    function onLoadFunction() {
+      initLinks();
+      updateMethodVideo();
+    }
 </script>
 </head>
 
 
-<body onload="updateMethodVideo();">
+<body onload="onLoadFunction();">
 <section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
   <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
     <video playsinline autoplay muted loop>
@@ -90,18 +110,18 @@
   </div>
   <div class="overlay"></div>
   <!-- Hero head: will stick at the top -->
-  <div class="hero-head is-hidden">
+  <div class="hero-head is-hidden-mobile">
     <header class="navbar">
       <div class="container is-size-5">
         <div class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item pl-4 pr-4" href="">
+            <a class="navbar-item pl-4 pr-4 paper-link">
               <span class="icon" style="margin-right:5px;">
                 <img src="./static/images/pdf.svg" alt="PDF" />
               </span>
               <span>Paper</span>
             </a>
-            <a class="navbar-item  pl-4 pr-4" href="">
+            <a class="navbar-item  pl-4 pr-4 arxiv-link" href="">
               <span class="icon" style="margin-right:5px;">
                 <img src="./static/images/arxiv.svg" alt="ArXiv" />
               </span>
@@ -112,7 +132,7 @@
               </span>
               <span>Video</span> </a>
             <span class="navbar-item  pl-4 pr-4">
-              <a href="" class="button is-inverted is-large">
+              <a href="" class="button is-inverted is-large github-link">
                 <span class="icon">
                   <span class="icon">
                     <img src="./static/images/github-mark.svg" alt="GitHub" />
@@ -136,14 +156,14 @@
       <h1 class="subtitle is-1 publication-title is-size-3-mobile" style="font-size: 4rem;">
         Towards Versatile Humanoid Whole-Body Loco-Manipulation via Skill Blending
       </h1>
-      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
+      <!-- <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
         Anonymous Submission
-      </h1>
-      <div class="column has-text-centered is-hidden">
+      </h1> -->
+      <div class="column has-text-centered is-hidden-tablet">
         <div class="publication-links">
           <!-- PDF Link. -->
           <span class="link-block">
-            <a href="" class="external-link button is-normal is-rounded is-dark">
+            <a href="" class="external-link button is-normal is-rounded is-dark paper-link">
               <span class="icon">
                 <img src="./static/images/pdf.svg" alt="PDF" />
               </span>
@@ -151,7 +171,7 @@
             </a>
           </span>
           <span class="link-block">
-            <a href="" class="external-link button is-normal is-rounded is-dark">
+            <a href="" class="external-link button is-normal is-rounded is-dark arxiv-link">
               <span class="icon">
                 <img src="./static/images/arxiv.svg" alt="ArXiv" />
               </span>
@@ -170,7 +190,7 @@
           <!-- Code Link. -->
           <span class="link-block">
             <a href=""
-              class="external-link button is-normal is-rounded is-dark">
+              class="external-link button is-normal is-rounded is-dark github-link">
               <span class="icon">
                 <img src="./static/images/github-mark-white.svg" alt="GitHub" />
               </span>
@@ -482,6 +502,137 @@
       </p>
     </div>
 
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="box pt-6 pb-6">
+      <div class="columns is-max-desktop is-centered ">
+        <div class="column is-four-fifths is-centered">
+          <h2 class="title is-2 has-text-centered is-size-5-mobile">Try out SkillBlender and SkillBench!</h2>
+          <video autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/try_it.mp4" type="video/mp4">
+          </video>
+          <div class="content">
+            We open-sourced our <b>SkillBlender</b> framework and <b>SkillBench</b> benchmark. Feel free download the code and try it out yourself! We look forward to more and more open-source humanoid research!
+          </div>
+          <div class="content">
+          </div>
+          <div class="has-text-centered">
+            <a href="" class="github-link">
+              <button class="button is-primary">Download Code</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section is-small">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 is-size-4-mobile">Our Team</h2>
+    <div class="container has-text-centered">
+      <div class="publication-authors is-flex justify-content is-justify-content-space-around">
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://yuxuank.com/">
+              <img class="is-rounded
+                      " src="./static/images/author/yuxuan.jpg" alt="Yuxuan Kuang">
+            </a>
+          </figure>
+          <a href="https://yuxuank.com/">Yuxuan Kuang</a><sup>1,2,3*</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://geng-haoran.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/author/haoran.jpg" alt="Haoran Geng">
+            </a>
+          </figure>
+          <a href="https://geng-haoran.github.io/">Haoran Geng</a><sup>4*</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://stanfordasl.github.io/people/amine-elhafsi/">
+              <img class="is-rounded
+                      " src="./static/images/author/amine.jpg" alt="Amine Elhafsi">
+            </a>
+          </figure>
+          <a href="https://stanfordasl.github.io/people/amine-elhafsi/">Amine Elhafsi</a><sup>2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://dotandung.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/author/tan-dzung.jpg" alt="Tan-Dzung Do">
+            </a>
+          </figure>
+          <a href="https://dotandung.github.io/">Tan-Dzung Do</a><sup>3</sup>
+        </div>
+      </div>
+      <br>
+      <div class="publication-authors is-flex justify-content is-justify-content-space-around">
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://people.eecs.berkeley.edu/~pabbeel/">
+              <img class="is-rounded
+                      " src="./static/images/author/pieter.jpg" alt="Pieter Abbeel">
+            </a>
+          </figure>
+          <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a><sup>4</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://people.eecs.berkeley.edu/~malik/">
+              <img class="is-rounded
+                      " src="./static/images/author/jitendra.jpg" alt="Jitendra Malik">
+            </a>
+          </figure>
+          <a href="https://people.eecs.berkeley.edu/~malik/">Jitendra Malik</a><sup>4</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://web.stanford.edu/people/pavone">
+              <img class="is-rounded
+                      " src="./static/images/author/marco.jpg" alt="Marco Pavone">
+            </a>
+          </figure>
+          <a href="https://web.stanford.edu/people/pavone">Marco Pavone</a><sup>2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://yuewang.xyz/">
+              <img class="is-rounded
+                      " src="./static/images/author/yue.jpg" alt="Yue Wang">
+            </a>
+          </figure>
+          <a href="https://yuewang.xyz/">Yue Wang</a><sup>1</sup>
+        </div>
+      </div>
+
+      <br>
+      <div class="publication-authors">
+        <span class="author-block"><sup>1</sup>University of Southern California, </span>
+        <span class="author-block"><sup>2</sup>Stanford University, </span>
+        <br>
+        <span class="author-block"><sup>3</sup>Peking University, </span>
+        <span class="author-block"><sup>4</sup>University of California, Berkeley</span>
+        <br>
+        <span class="author-block">* Equal contributions</span>
+      </div>
+
+
+    </div>
+    <br>
+    <pre><code>BibTex</code></pre>
+    <br>
+    <p>
+      If you have any questions, please <a href="mailto:yuxuank@cs.cmu.edu">contact Yuxuan Kuang</a>.
+    </p>
   </div>
 </section>
 
