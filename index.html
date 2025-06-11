@@ -63,23 +63,7 @@
         }
     }
 
-    function initLinks() {
-      const paper_links = document.querySelectorAll('.paper-link');
-      const arxiv_links = document.querySelectorAll('.arxiv-link');
-      const github_links = document.querySelectorAll('.github-link');
-      paper_links.forEach(link => {
-        link.href = "https://arxiv.org/";
-      });
-      arxiv_links.forEach(link => {
-        link.href = "https://arxiv.org/"; // Replace with actual arXiv link
-      });
-      github_links.forEach(link => {
-        link.href = "https://github.com/Humanoid-SkillBlender/SkillBlender"; // Replace with actual arXiv link
-      });
-    }
-
     function onLoadFunction() {
-      initLinks();
       updateMethodVideo();
     }
 </script>
@@ -115,13 +99,13 @@
       <div class="container is-size-5">
         <div class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item pl-4 pr-4 paper-link">
+            <a class="navbar-item pl-4 pr-4 paper-link" href="https://arxiv.org/">
               <span class="icon" style="margin-right:5px;">
                 <img src="./static/images/pdf.svg" alt="PDF" />
               </span>
               <span>Paper</span>
             </a>
-            <a class="navbar-item  pl-4 pr-4 arxiv-link" href="">
+            <a class="navbar-item  pl-4 pr-4 arxiv-link" href="https://arxiv.org/">
               <span class="icon" style="margin-right:5px;">
                 <img src="./static/images/arxiv.svg" alt="ArXiv" />
               </span>
@@ -132,7 +116,7 @@
               </span>
               <span>Video</span> </a>
             <span class="navbar-item  pl-4 pr-4">
-              <a href="" class="button is-inverted is-large github-link">
+              <a href="https://github.com/Humanoid-SkillBlender/SkillBlender" class="button is-inverted is-large github-link">
                 <span class="icon">
                   <span class="icon">
                     <img src="./static/images/github-mark.svg" alt="GitHub" />
@@ -163,7 +147,7 @@
         <div class="publication-links">
           <!-- PDF Link. -->
           <span class="link-block">
-            <a href="" class="external-link button is-normal is-rounded is-dark paper-link">
+            <a href="https://arxiv.org/" class="external-link button is-normal is-rounded is-dark paper-link">
               <span class="icon">
                 <img src="./static/images/pdf.svg" alt="PDF" />
               </span>
@@ -171,7 +155,7 @@
             </a>
           </span>
           <span class="link-block">
-            <a href="" class="external-link button is-normal is-rounded is-dark arxiv-link">
+            <a href="https://arxiv.org/" class="external-link button is-normal is-rounded is-dark arxiv-link">
               <span class="icon">
                 <img src="./static/images/arxiv.svg" alt="ArXiv" />
               </span>
@@ -189,7 +173,7 @@
           </span>
           <!-- Code Link. -->
           <span class="link-block">
-            <a href=""
+            <a href="https://github.com/Humanoid-SkillBlender/SkillBlender"
               class="external-link button is-normal is-rounded is-dark github-link">
               <span class="icon">
                 <img src="./static/images/github-mark-white.svg" alt="GitHub" />
@@ -520,7 +504,7 @@
           <div class="content">
           </div>
           <div class="has-text-centered">
-            <a href="" class="github-link">
+            <a href="https://github.com/Humanoid-SkillBlender/SkillBlender" class="github-link">
               <button class="button is-primary">Download Code</button>
             </a>
           </div>
